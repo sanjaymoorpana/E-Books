@@ -1,0 +1,69 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        span {
+            color: red;
+        }
+
+        tr,
+        td {
+            padding: 10px;
+        }
+
+        fieldset {
+            background-color: lightgrey;
+        }
+        
+        legend {
+            background-color: white;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <center>
+        <h1>Enter Email</h1>
+        {% if msg %}
+        {{msg}}
+        {% endif %}
+        <form name="enter_email" method="POST" action="{% url 'forgot_password' %}">
+            {% csrf_token %}
+            <fieldset>
+            <table paddin>
+                
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" required="required"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="submit" value="Send OTP" class="btn btn-primary">
+                    </td>
+                    
+                </tr>
+
+                
+            </table>
+            </fieldset>
+        </form>
+    </center>
+</body>
+
+</html>
+{% endblock %}
